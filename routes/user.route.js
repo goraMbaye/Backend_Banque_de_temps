@@ -6,6 +6,8 @@ let User = require('../model/user');
 //add user in database
 userRoutes.route('/add').post((req,res)=>{
   let user = new User(req.body);  
+  console.log("body recupere",user);
+  res.header("Access-Control-Allow-Origin", "*");
   user.save().then(user=>{
       res.status(200).json({'user':'user is created'});
   })

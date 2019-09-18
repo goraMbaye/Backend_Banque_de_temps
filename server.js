@@ -7,6 +7,7 @@ const express = require('express'),
     const config = require('./DB');
     const app = express();
     const userRoutes = require('./routes/user.route');
+    const loginRoutes = require('./routes/login.route')
     mongoose.Promise = global.Promise;
     //connect database with backend
     mongoose.connect(config.DB, { useNewUrlParser: true }).then(
@@ -18,6 +19,7 @@ const express = require('express'),
       app.use(bodyParser.json());
       app.use(cors());
       app.use('/user',userRoutes);
+      app.use('/login',loginRoutes);
 
     let port = process.env.PORT || 4000;
 
