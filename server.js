@@ -7,7 +7,8 @@ const express = require('express'),
     const config = require('./DB');
     const app = express();
     const userRoutes = require('./routes/user.route');
-    const loginRoutes = require('./routes/login.route')
+    const loginRoutes = require('./routes/login.route');
+    const ajouterServiceRoute =require('./routes/ajouterService.route')
     mongoose.Promise = global.Promise;
     //connect database with backend
     mongoose.connect(config.DB, { useNewUrlParser: true }).then(
@@ -20,7 +21,8 @@ const express = require('express'),
       app.use(cors());
       app.use('/user',userRoutes);
       app.use('/login',loginRoutes);
-
+      app.use('/addService',ajouterServiceRoute);
+      app.use('/addService/service',ajouterServiceRoute);
     let port = process.env.PORT || 4000;
 
     const server = app.listen(port,()=>{
