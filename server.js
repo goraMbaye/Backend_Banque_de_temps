@@ -21,8 +21,7 @@ const express = require('express'),
       app.use(cors());
       app.use('/user',userRoutes);
       app.use('/login',loginRoutes);
-      app.use('/addService',ajouterServiceRoute);
-      app.use('/addService/service',ajouterServiceRoute);
+      app.use('/service',ajouterServiceRoute);
     let port = process.env.PORT || 4000;
 
     const server = app.listen(port,()=>{
